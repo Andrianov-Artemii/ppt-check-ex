@@ -1,5 +1,5 @@
 # This workflow run security tests and send message for orgs into chat
-
+# -679349277
 name: Check it!
 
 on:
@@ -7,7 +7,7 @@ on:
     branches: [ checked ]
 
 jobs:
-  build:
+  security-tests:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -18,3 +18,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: Send hello
       run: echo "Hello"
+    
+  checkit:
+    - name: Send request
+      needs: security-tests
+      uses: appleboy/telegram-action@master
+      with:
+        to: 679349277
+        token: "5292735252:AAHbDsG2pWZlYYTlUVOdwE4scVs7c62lz7U"
+        message: |
+            ❇️ ${{ github.actor }} Подал новую заявку на проверку ❇️            
+            Ссылка на pullhttps://github.com/${{ github.repository }}/commit/${{github.sha}}
+    
+
