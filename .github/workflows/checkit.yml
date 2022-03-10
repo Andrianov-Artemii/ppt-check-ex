@@ -13,6 +13,10 @@ jobs:
   security-tests:
     runs-on: ubuntu-latest
     steps:
+    - name: github dump
+      env:
+        dump: ${{ toJson(github)}}
+      run: echo "$dump"
     - name: Send request
       uses: appleboy/telegram-action@master
       with:
