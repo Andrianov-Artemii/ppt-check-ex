@@ -4,7 +4,7 @@ name: onclose
 on:
   pull_request:
     branches: [checked]
-    types: [ close ]
+    types: [ closed]
   
 jobs:
   send-instructions:
