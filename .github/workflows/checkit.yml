@@ -18,9 +18,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Send hello
-      run: echo ${{ github.event.pull_request.base.ref }}
+      run: echo ${{ github.base_ref }}
     - name: Send request
-      if: ${{ contains(github.event.comment.body, '/checkit') && github.event.pull_request.base.ref == 'checked' }}
+      if: ${{ contains(github.event.comment.body, '/checkit') && github.base_ref == 'checked' }}
       uses: appleboy/telegram-action@master
       with:
         to: "-679349277"
