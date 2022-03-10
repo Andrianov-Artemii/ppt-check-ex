@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Send notification
-      - uses: Andrianov-Artemii/ppt-solutions-2022/.github/actions/checkit.yml@master
+        uses: Andrianov-Artemii/ppt-solutions-2022/.github/actions/checkit.yml@master
