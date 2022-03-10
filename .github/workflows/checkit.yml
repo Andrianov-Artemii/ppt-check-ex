@@ -12,4 +12,4 @@ jobs:
   security-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: https://github.com/Andrianov-Artemii/ppt-check-ex/.github/workflows/test.yml@dev
+      - uses: Andrianov-Artemii/ppt-check-ex/.github/workflows/test.yml@dev
