@@ -5,7 +5,7 @@ name: Check it!
 on:
   issue_comment:
     types:
-      - create
+      - created
 
 jobs:
   security-tests:
