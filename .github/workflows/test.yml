@@ -14,4 +14,3 @@ jobs:
         message: |
             ${{ github.actor }} переоткрыл заявку на проверку, надо поглазеть👀!         
             Ссылка на PR: ${{github.event.pull_request._links.html.href}}
-    s
