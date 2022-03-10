@@ -17,8 +17,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
     - name: Send hello
-      run: echo $GITHUB_BASE_REF
     - name: Send request
       if: ${{ contains(github.event.comment.body, '/checkit') && github.base_ref == 'checked' }}
       uses: appleboy/telegram-action@master
