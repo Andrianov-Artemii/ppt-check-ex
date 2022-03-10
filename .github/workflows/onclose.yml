@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: dump
         env:
-          dump: ${{ toJson(github.event.pull_request._links.html)}}
+          dump: ${{ toJson(github)}}
         run: echo "$dump"
       - name: Send instructions 
         uses: thollander/actions-comment-pull-request@v1
