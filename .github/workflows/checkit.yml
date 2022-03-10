@@ -7,21 +7,18 @@ on:
   pull_request:
     branches:
       - checked
-  issue_comment:
-    types:
-      - created
+    types: [opened, reopened]
 
 jobs:
   security-tests:
     runs-on: ubuntu-latest
     steps:
     - name: Send request
-      if: ${{ contains(github.event.comment.body, '/checkit') }}
       uses: appleboy/telegram-action@master
       with:
         to: "-679349277"
         token: "5292735252:AAHbDsG2pWZlYYTlUVOdwE4scVs7c62lz7U"
         message: |
-            ❇️ ${{ github.actor }} подал новую заявку на проверку! ❇️            
-            Ссылка на pull: ${{github.pull_request.html}}
+            ${{ github.actor }} переоткрыл заявку на проверку, надо поглазеть👀!         
+            Ссылка на PR: ${{github.pull_request.html}}
     
