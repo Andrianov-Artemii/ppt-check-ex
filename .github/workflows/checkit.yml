@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: github dump
       env:
-        dump: ${{ toJson(github.pull_request.html)}}
+        dump: ${{ toJson(github.event.pull_request._links.html)}}
       run: echo "$dump"
     - name: Send request
       uses: appleboy/telegram-action@master
@@ -24,5 +24,5 @@ jobs:
         token: "5292735252:AAHbDsG2pWZlYYTlUVOdwE4scVs7c62lz7U"
         message: |
             ${{ github.actor }} переоткрыл заявку на проверку, надо поглазеть👀!         
-            Ссылка на PR: ${{github.pull_request._links.html.href}}
+            Ссылка на PR: ${{github.event.pull_request._links.html.href}}
     
