@@ -21,7 +21,7 @@ jobs:
     - name: Send request  
       uses: appleboy/telegram-action@master
       with:
-        to: 679349277
+        to: -679349277
         token: "5292735252:AAHbDsG2pWZlYYTlUVOdwE4scVs7c62lz7U"
         message: |
             ❇️ ${{ github.actor }} подал новую заявку на проверку! ❇️            
