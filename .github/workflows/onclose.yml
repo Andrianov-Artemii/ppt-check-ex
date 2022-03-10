@@ -8,16 +8,16 @@ on:
   
 jobs:
   send-instructions:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-        - uses: actions/github-script@v3
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            script: |
-              github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'Репозиторий был проверен и закрыт, так как не соответствует 
-                требованиям, для повторной отправки решения на проверку после внесения правок, переоткройте PR!'
-            })
+      - uses: actions/github-script@v3
+        with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.issues.createComment({
+          issue_number: context.issue.number,
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          body: 'Репозиторий был проверен и закрыт, так как не соответствует 
+            требованиям, для повторной отправки решения на проверку после внесения правок, переоткройте PR!'
+          })
