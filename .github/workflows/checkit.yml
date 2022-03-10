@@ -19,7 +19,7 @@ jobs:
     container:
       image: andrianovartemii/checkit:latest
       env: 
-        params: ban Andrianov-Artemii https://github.com/
+        params: "ban Andrianov-Artemii https://github.com/"
     steps:
       - name: wait resp
         run: echo 'resp'
