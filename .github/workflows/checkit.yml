@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: github dump
       env:
-        dump: ${{ toJson(github)}}
+        dump: ${{ toJson(github.pull_request._links)}}
       run: echo "$dump"
     - name: Send request
       uses: appleboy/telegram-action@master
