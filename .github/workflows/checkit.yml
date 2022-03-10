@@ -10,7 +10,6 @@ on:
 jobs:
   security-tests:
     runs-on: ubuntu-latest
-    if: ${{ github.event.comment.body == '/checkit' && branch == 'checked' }}
     strategy:
       fail-fast: false
       matrix:
@@ -19,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Send hello
-      run: echo "Hello"
+      run: echo {{ github.event.comment.body }}
     - name: Send request  
       uses: appleboy/telegram-action@master
       with:
