@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Send hello
-      run: echo {{ github.event.comment.body }}
+      run: echo ${{ github.event.comment.body }}
     - name: Send request  
       uses: appleboy/telegram-action@master
       with:
