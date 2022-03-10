@@ -20,7 +20,7 @@ jobs:
     - name: Send hello
       run: echo ${{ github.event.comment.body }}
     - name: Send request
-      if: contains(github.event.comment.body, '/checkit') && branch == 'checked'
+      if: ${{ contains(github.event.comment.body, '/checkit') && branch == 'checked' }}
       uses: appleboy/telegram-action@master
       with:
         to: "-679349277"
