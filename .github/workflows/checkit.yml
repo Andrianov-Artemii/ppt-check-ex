@@ -25,6 +25,6 @@ jobs:
         token: "5292735252:AAHbDsG2pWZlYYTlUVOdwE4scVs7c62lz7U"
         message: |
             ❇️ ${{ github.actor }} подал новую заявку на проверку! ❇️            
-            Ссылка на pullhttps://github.com/${{ github.repository }}/commit/${{github.sha}}
+            Ссылка на pull: https://github.com/${{ github.repository }}/commit/${{github.sha}}
     
 
