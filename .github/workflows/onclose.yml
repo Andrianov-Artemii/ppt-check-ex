@@ -1,0 +1,23 @@
+#Start when checked pull request was close 
+name: onclose
+
+on:
+  pull_request:
+    branches: [checked]
+    types: [ close ]
+  
+jobs:
+  send-instructions:
+    run-on: ubuntu-latest
+    steps:
+        - uses: actions/github-script@v3
+        - with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            script: |
+              github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Репозиторий был проверен и закрыт, так как не соответствует 
+                требованиям, для повторной отправки решения на проверку после внесения правок, переоткройте PR!'
+            })
