@@ -10,13 +10,7 @@ jobs:
   send-instructions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v3
+       - uses: actions/first-interaction@v1
         with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          github.issues.createComment({
-          issue_number: context.issue.number,
-          owner: context.repo.owner,
-          repo: context.repo.repo,
-          body: 'Репозиторий был проверен и закрыт, так как не соответствует требованиям, для повторной отправки решения на проверку после внесения правок, переоткройте PR!'
-          })
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "PR закрыли, его надо будет переоткрыть, когда будете готовы, что позвать оргов"
