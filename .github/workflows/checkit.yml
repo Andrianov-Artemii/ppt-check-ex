@@ -18,8 +18,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Send hello
       run: echo "Hello"
-    
-  checkit:
     - name: Send request  
       uses: appleboy/telegram-action@master
       with:
