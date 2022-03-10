@@ -10,4 +10,4 @@ on:
 
 jobs:
   security-tests:
-    uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/test.yml@master
+    uses: Andrianov-Artemii/ppt-solutions-2022/.github/actions/checkit.yml@master
