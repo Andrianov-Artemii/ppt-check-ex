@@ -1,31 +1,18 @@
-# This workflow run security tests and send message for orgs into chat
-# -679349277
-name: Check it!
-
+name: pull request comment
 on:
-  issue_comment:
-    types:
-      - created
+  issue_comment:                                     
+    types: [created, edited, deleted]
 
 jobs:
-  security-tests:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: [ "3.10" ]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Send hello
-      run: echo ${{ github.event.comment.body }}
-    - name: Send request
-      if: contains(github.event.comment.body, '/checkit')  
-      uses: appleboy/telegram-action@master
-      with:
-        to: "-679349277"
-        token: "5292735252:AAHbDsG2pWZlYYTlUVOdwE4scVs7c62lz7U"
-        message: |
-            ❇️ ${{ github.actor }} подал новую заявку на проверку! ❇️            
-            Ссылка на pull: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-    
+ job01:
+   if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
+   runs-on: [ubuntu-latest]
+   steps:
+     - name: say hello
+       if: contains(github.event.comment.body, '/support')   # check the comment if it contains the keywords
+       run: |
+         echo say hello
+     - name: test
+       if: contains(github.event.comment.body, '/test')  # check the comment if it contains the keywords
+       run: |
+         echo test
