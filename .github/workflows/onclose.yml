@@ -10,6 +10,10 @@ jobs:
   send-instructions:
     runs-on: ubuntu-latest
     steps:
+      - name: dump
+        env:
+          dump: ${{ toJson(github.event.pull_request._links.html)}}
+        run: echo "$dump"
       - name: Send instructions 
         uses: thollander/actions-comment-pull-request@v1
         
