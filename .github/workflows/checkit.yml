@@ -3,12 +3,16 @@
 name: Check it!
 
 on:
+  issue_comment:
+    types:
+      - create
   pull_request:
     branches: [ checked ]
 
 jobs:
   security-tests:
     runs-on: ubuntu-latest
+    if: ${{ github.event.comment.body.startwith('/checkit') }}
     strategy:
       fail-fast: false
       matrix:
