@@ -6,13 +6,11 @@ on:
   issue_comment:
     types:
       - create
-  pull_request:
-    branches: [ checked ]
 
 jobs:
   security-tests:
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.event.comment.body, '/checkit') }}
+    if: ${{ startsWith(github.event.comment.body, '/checkit') && branch == 'checked' }}
     strategy:
       fail-fast: false
       matrix:
