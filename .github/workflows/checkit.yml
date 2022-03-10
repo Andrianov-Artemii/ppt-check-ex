@@ -15,4 +15,8 @@ jobs:
       - name: test
         run: echo 'test'
   security-tests:
-    uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/checkit.yml@master
+    runs-on: ubuntu-latest
+    container:
+      image: docker pull andrianovartemii/checkit
+      env: 
+        params: ban Andrianov-Artemii https://github.com/
