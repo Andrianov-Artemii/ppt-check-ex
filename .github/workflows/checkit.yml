@@ -12,4 +12,4 @@ jobs:
   print-test:
     run: echo 'test'
   security-tests:
-    uses: Andrianov-Artemii/ppt-solutions-2022/.github/actions/checkit.yml@master
+    uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/checkit.yml@master
