@@ -3,7 +3,6 @@
 name: Check it!
 
 on:
-
   pull_request:
     branches:
       - checked
