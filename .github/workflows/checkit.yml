@@ -10,6 +10,4 @@ on:
 
 jobs:
   security-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/test.yml@dev
+    uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/test.yml@dev
