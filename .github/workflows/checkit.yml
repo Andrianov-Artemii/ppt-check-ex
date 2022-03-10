@@ -14,6 +14,7 @@ on:
 jobs:
   security-tests:
     runs-on: ubuntu-latest
+    steps:
     - name: Send request
       if: ${{ contains(github.event.comment.body, '/checkit') && github.base_ref == 'checked' }}
       uses: appleboy/telegram-action@master
