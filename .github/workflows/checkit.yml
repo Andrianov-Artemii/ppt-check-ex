@@ -21,7 +21,6 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
-    - name: Send hello
     - name: Send request
       if: ${{ contains(github.event.comment.body, '/checkit') && github.base_ref == 'checked' }}
       uses: appleboy/telegram-action@master
