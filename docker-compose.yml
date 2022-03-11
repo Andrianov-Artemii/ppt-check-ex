@@ -3,9 +3,9 @@ version: "3.9"
 services: 
   ppt-task1-younger-brother-container:
     build: ./ppt-task1-younger-brother
-    
+
   ppt-task2-older-brother-container:
     build: ./ppt-task2-older-brother
 
   ppt-task3-supreme-commander-container:
-    build: ./ppt-task3-supreme-commanger
+    build: ./ppt-task3-supreme-commander
