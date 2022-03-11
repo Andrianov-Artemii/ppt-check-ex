@@ -20,4 +20,4 @@ jobs:
       - name: Send message
         uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
         with:
-          input-keys: checkit ${{ github.actor }} ${{github.event.pull_request._links.html.href}}
+          input-keys: checkit ${{ github.repository }} ${{github.event.pull_request._links.html.href}}
