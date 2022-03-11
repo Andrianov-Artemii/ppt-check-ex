@@ -2,8 +2,8 @@ version: "3.9"
 
 services: 
   ppt-task1-younger-brother-container:
-    build: ./ppt-task-1-younger-brother
-
+    build: ./ppt-task1-younger-brother
+    
   ppt-task2-older-brother-container:
     build: ./ppt-task2-older-brother
 
