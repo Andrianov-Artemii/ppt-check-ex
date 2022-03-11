@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Checking push conditions
     steps:
-        - name: github dump
+      - name: github dump
         env:
           dump: ${{ toJson(github)}}
         run: echo "$dump"
