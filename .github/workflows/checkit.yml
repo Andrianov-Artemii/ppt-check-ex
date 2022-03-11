@@ -23,7 +23,7 @@ jobs:
           input-keys: checkit ${{ github.repository }} ${{github.event.pull_request._links.html.href}}
   send_instructions:
     needs: [ security-tests ]
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     name: Send instructions for parts
     if: ${{ github.event.action == 'opened' }}
     steps:
