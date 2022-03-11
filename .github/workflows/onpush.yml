@@ -20,12 +20,8 @@ jobs:
     name: Build your solution
     steps:
       - uses: actions/checkout@v2
-      - run: ls -la
       - name: Test task1
-        working-directory: task1
-        run: |
-          docker build -t task1-test .
-          docker run --rm task1-test 
+        run: docker-compose up
       - name: Check checkit workflow
         run: echo "Status OK"
   
