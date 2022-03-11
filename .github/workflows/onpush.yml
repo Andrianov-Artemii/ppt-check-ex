@@ -9,8 +9,8 @@ jobs:
     name: Check commit
     steps: 
       - name: Checking for the existence of tasks-dir
+        working-directory: .
         run: |
-          ls -la
           [[ ! -d ./ppt-task1-younger-brother ]] && exit 1 
           [[ ! -d ./ppt-task2-older-brother ]] && exit 1 
           [[ ! -d ./ppt-task3-supreme-commander ]] && exit 1 
