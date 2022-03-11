@@ -1,6 +1,6 @@
 name: Push tests
 
-on: [ push ]
+on: [ push, workflow_call ]
 
 jobs:   
 
@@ -12,6 +12,7 @@ jobs:
       - name: Checking for the existence of tasks-dir
         working-directory: .
         run: |
+          pwd
           (test ! -d /ppt-task1-younger-brother) && exit 1 
           (test ! -d /ppt-task2-older-brother) && exit 2 
           (test ! -d /ppt-task3-supreme-commander) && exit 3 
@@ -20,7 +21,7 @@ jobs:
   check_push_context:
     runs-on: ubuntu-latest
     name: Checking push conditions
-    if: ${{ false }}
+    if: ${{ github.event_name != 'workflow_call' }}
     steps:
       - name: Check publication time
         id: cond-checks
