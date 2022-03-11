@@ -19,8 +19,11 @@ jobs:
     name: Build your solution
     steps:
       - name: Test task1
-        run: cd task1; docker build -t task1-test .
-        run: docker run --rm task1-test 
+        id: task1
+        run: |
+          cd task1; docker build -t task1-test .
+          docker run --rm task1-test 
       - name: Check checkit workflow
+        needs: [build.task1]
         run: echo "Status OK"
   
