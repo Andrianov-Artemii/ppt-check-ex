@@ -17,6 +17,9 @@ jobs:
     name: Checking push conditions
     steps:
       - name: Check publication time
+        id: cond-checks
         uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
         with:
           input-keys: push ${{ github.actor }} ${{github.event.commits[0].url}}
+      - name: Check return
+        run: echo "Output is ${{ steps.cond-checks.outputs.output-task }}"
