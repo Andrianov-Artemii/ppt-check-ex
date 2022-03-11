@@ -25,7 +25,7 @@ jobs:
     needs: [ security-tests ]
     runs-on: ubuntu_latest
     name: Send instructions for parts
-    if: ${{ github.event.action == open }}
+    if: ${{ github.event.action == 'opened' }}
     steps:
       - name: Send instructions
         uses: thollander/actions-comment-pull-request@v1
