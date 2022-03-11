@@ -24,7 +24,8 @@ jobs:
         run: |
           pwd
           ls -la
-          cd task1; docker build -t task1-test .
+          cd task1
+          docker build -t task1-test .
           docker run --rm task1-test 
       - name: Check checkit workflow
         run: echo "Status OK"
