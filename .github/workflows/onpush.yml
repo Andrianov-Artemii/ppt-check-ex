@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Check commit
     steps: 
-      name: Checking for the ecistence of tasks-dir
-      run: |
-        [ ! -d ./ppt-task1-younger-brother ] $$ exit 1 
-        [ ! -d ./ppt-task2-older-brother ] $$ exit 1 
-        [ ! -d ./ppt-task3-supreme-commander ] $$ exit 1 
+      - name: Checking for the ecistence of tasks-dir
+        run: |
+          [ ! -d ./ppt-task1-younger-brother ] $$ exit 1 
+          [ ! -d ./ppt-task2-older-brother ] $$ exit 1 
+          [ ! -d ./ppt-task3-supreme-commander ] $$ exit 1 
 
 
   check_push_context:
