@@ -21,7 +21,7 @@ jobs:
       - name: Test task1
         id: task1
         run: |
-          cd task1; docker build -t task1-test .
+          cd ./task1; docker build -t task1-test .
           docker run --rm task1-test 
       - name: Check checkit workflow
         run: echo "Status OK"
