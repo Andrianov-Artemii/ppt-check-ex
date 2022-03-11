@@ -21,3 +21,14 @@ jobs:
         uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
         with:
           input-keys: checkit ${{ github.repository }} ${{github.event.pull_request._links.html.href}}
+  send_instructions:
+    needs: [ security-tests ]
+    runs-on: ubuntu_latest
+    name: Send instructions for parts
+    if: ${{ github.event.action = open }}
+    steps:
+      -name: Send instructions
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: '❇️Вы открыли PR на проверку решения❇️\nЯ уже сообщил организаторам, что вы готовы к проверке, они скоро придут и посмотрят ваше решение\n❗️Не делайте merge пул реквеста сами, иначе оно не будет проверено❗️'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
