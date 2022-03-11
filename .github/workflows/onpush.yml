@@ -1,0 +1,22 @@
+name: Push tests
+
+on: [ push ]
+
+jobs:
+  check_dependencies:
+    runs-on: ubuntu-latest
+    name: Comparing dependencies with a favorite repository
+    steps:
+      - name: Check on push workflow
+        run: echo "Status OK"
+      - name: Check checkit workflow
+        run: echo "Status OK"
+      
+  check_push_context:
+    runs-on: ubuntu-latest
+    name: Checking push conditions
+    steps:
+        - name: github dump
+        env:
+          dump: ${{ toJson(github)}}
+        run: echo "$dump"
