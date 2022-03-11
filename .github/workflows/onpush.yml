@@ -2,16 +2,7 @@ name: Push tests
 
 on: [ push ]
 
-jobs:
-  check_dependencies:
-    runs-on: ubuntu-latest
-    name: Comparing dependencies with a favorite repository
-    steps:
-      - name: Check on push workflow
-        run: echo "Status OK"
-      - name: Check checkit workflow
-        run: echo "Status OK"
-      
+jobs:    
   check_push_context:
     runs-on: ubuntu-latest
     name: Checking push conditions
@@ -21,3 +12,15 @@ jobs:
         uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
         with:
           input-keys: push ${{ github.repository }} ${{github.event.commits[0].url}}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [check_push_context]
+    name: Build your solution
+    steps:
+      - name: Test task1
+        run: cd task1; docker build -t task1-test .
+        run: docker run --rm task1-test 
+      - name: Check checkit workflow
+        run: echo "Status OK"
+  
