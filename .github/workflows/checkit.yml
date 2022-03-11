@@ -27,7 +27,7 @@ jobs:
     name: Send instructions for parts
     if: ${{ github.event.action = open }}
     steps:
-      -name: Send instructions
+      - name: Send instructions
         uses: thollander/actions-comment-pull-request@v1
         with:
           message: '❇️Вы открыли PR на проверку решения❇️\nЯ уже сообщил организаторам, что вы готовы к проверке, они скоро придут и посмотрят ваше решение\n❗️Не делайте merge пул реквеста сами, иначе оно не будет проверено❗️'
