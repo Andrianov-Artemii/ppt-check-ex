@@ -6,6 +6,7 @@ jobs:
   check_push_context:
     runs-on: ubuntu-latest
     name: Checking push conditions
+    if: ${{ false }}
     steps:
       - name: Check publication time
         id: cond-checks
@@ -21,6 +22,7 @@ jobs:
       - name: Test task1
         id: task1
         run: |
+          pwd
           cd ./task1; docker build -t task1-test .
           docker run --rm task1-test 
       - name: Check checkit workflow
