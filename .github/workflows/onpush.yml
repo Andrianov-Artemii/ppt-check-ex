@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Check commit
     steps: 
+      - uses: actions/checkout@v2
       - name: Checking for the existence of tasks-dir
         working-directory: .
         run: |
