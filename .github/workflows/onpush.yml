@@ -23,6 +23,7 @@ jobs:
       - name: Test task1
         working-directory: .
         run: |
+          ls -la
           docker-compose build
           docker-compose up
       - name: Check checkit workflow
