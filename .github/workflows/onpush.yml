@@ -20,7 +20,7 @@ jobs:
     name: Build your solution
     steps:
       - name: Test task1
-        working-directory: ./task1
+        working-directory: task1
         run: |
           docker build -t task1-test .
           docker run --rm task1-test 
