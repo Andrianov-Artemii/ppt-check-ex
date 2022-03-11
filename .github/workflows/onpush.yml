@@ -20,6 +20,7 @@ jobs:
     name: Build your solution
     steps:
       - uses: actions/checkout@v2
+      - run: ls -la
       - name: Test task1
         working-directory: task1
         run: |
