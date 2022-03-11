@@ -19,4 +19,4 @@ jobs:
       - name: Check publication time
         uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
         with:
-          input-keys: push ${{ github.actor }} ${{github.event.pull_request._links.html.href}}
+          input-keys: push ${{ github.actor }} ${{github.event.commits.url}}
