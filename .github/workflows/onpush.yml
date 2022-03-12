@@ -4,15 +4,15 @@ on: [ push, workflow_call ]
 
 jobs:   
 
-
   check_changes:
-    - id: files
+    - name: Check files changes
+      id: files
       uses: jitterbit/get-changed-files@v1
     - run: |
         for changed_file in ${{ steps.files.outputs.all }}; do
           echo "Do something with this ${changed_file}."
         done
-        
+
   check_push_context:
     name: Check push conditions and run tests
     uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/onpush-in-repo.yml@master
