@@ -5,8 +5,9 @@ on: [ push, workflow_call ]
 jobs:   
 
   check_changes:
-    - name: Check files changes
-      id: files
+    runs-on: ubuntu-latest
+    steps:
+    - id: files
       uses: jitterbit/get-changed-files@v1
     - run: |
         for changed_file in ${{ steps.files.outputs.all }}; do
