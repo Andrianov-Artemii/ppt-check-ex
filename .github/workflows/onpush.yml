@@ -10,9 +10,9 @@ jobs:
     steps:
       - run: |
           # if cmp -s "./github/workflow" "Andrianov-Artemii/ppt-check-ex./github/workflow"  then
-              printf 'status ok!'
+              echo 'status ok!'
           else
-              printf 'status 500!'
+              echo 'status 500!'
           fi
         
   check_push_context:
