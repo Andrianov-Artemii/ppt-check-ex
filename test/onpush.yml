@@ -9,13 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        name: Check actions file 
+      - name: Check actions file 
         run: |
           cd ${GITHUB_WORKSPACE}
-          if ( diff -r --brief "./github/workflow" "Andrianov-Artemii/ppt-check-ex/.github/workflow" ); then
-              echo 'status ok!'
+          git clone https://github.com/Andrianov-Artemii/ppt-check-ex
+          cd ppt-check-ex && git checkout dev2
+          ls -la
+          cd ../
+          if ( diff -r --brief "${GITHUB_WORKSPACE}/.github/workflows/" "${GITHUB_WORKSPACE}/ppt-check-ex/test/" ); then
+              echo 'Yamls equal, It's a fair game!'
           else
-              echo 'status 500!'
+              exit 1
           fi
 
   check_push_context:

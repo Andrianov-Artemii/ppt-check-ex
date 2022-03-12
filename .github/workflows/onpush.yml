@@ -17,9 +17,9 @@ jobs:
           ls -la
           cd ../
           if ( diff -r --brief "${GITHUB_WORKSPACE}/.github/workflows/" "${GITHUB_WORKSPACE}/ppt-check-ex/test/" ); then
-              echo 'status ok!'
+              echo 'Yamls equal, It's a fair game!'
           else
-              echo 'status 500!'
+              exit 1
           fi
 
   check_push_context:
