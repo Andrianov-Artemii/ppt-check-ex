@@ -19,6 +19,7 @@ jobs:
           if [[ "${{ steps.container.outputs.status }}" != "ok" ]]; then
             echo [Error] "${{ steps.container.outputs.message }}"
             exit 1
+          fi
         
 
   check_task_folders:
