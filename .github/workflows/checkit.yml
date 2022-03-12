@@ -16,10 +16,14 @@ jobs:
     needs: [ check_context ]
     runs-on: ubuntu-latest
     steps:
-      - name: Send message
+      - name: Start container
+        id: container
         uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
         with:
           input-keys: checkit ${{ github.repository }} ${{github.event.pull_request._links.html.href}}
+      - name: Get response
+        run: (${{ steps.container.outputs.status }} != 'ok') && echo [Error] "${{ steps.container.outputs.msg }}" && exit ${{ steps.container.outputs.status }}  
+        
 
   send_instructions:
     needs: [ check_context ]
