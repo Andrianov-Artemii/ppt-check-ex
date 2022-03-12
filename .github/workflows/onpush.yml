@@ -19,7 +19,7 @@ jobs:
 
   check_docker_files:
     runs-on: ubuntu-latest
-    name: Chech dockerfiles exist
+    name: Check dockerfiles exist
     needs: [check_task_folders]
     steps: 
       - uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build your solutions
-    needs: [check_push_context]
+    needs: [check_task_folders, check_docker_files]
     steps:
       - uses: actions/checkout@v2
       - name: Docker compose containers

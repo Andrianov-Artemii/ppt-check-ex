@@ -9,18 +9,20 @@ on:
     types: [opened, reopened]
 
 jobs:
-  print-test:
-    runs-on: ubuntu-latest
+  check_context:
+    run-on: ubuntu-latest
     steps:
-      - name: test
-        run: echo 'test'
-  security-tests:
+      uses: ./onpush.yml
+
+  send_notif:
+    needs: [ check_context ]
     runs-on: ubuntu-latest
     steps:
       - name: Send message
         uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
         with:
           input-keys: checkit ${{ github.repository }} ${{github.event.pull_request._links.html.href}}
+
   send_instructions:
     needs: [ security-tests ]
     runs-on: ubuntu-latest
