@@ -10,7 +10,7 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - name: Checking for the existence of tasks-dir
-        working-directory: .
+        working-directory: /home/runner/work/ppt-check-ex/ppt-check-ex
         run: |
           pwd
           (test ! -d /ppt-task1-younger-brother) && exit 1 
@@ -21,7 +21,7 @@ jobs:
   check_push_context:
     runs-on: ubuntu-latest
     name: Checking push conditions
-    if: ${{ github.event_name != 'workflow_call' }}
+    if: ${{ github.event_name != 'workflow_call' && false }}
     steps:
       - name: Check publication time
         id: cond-checks

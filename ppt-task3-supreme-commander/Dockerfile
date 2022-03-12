@@ -1,7 +1,7 @@
 FROM python:latest
 
-RUN mkdir /task1
-WORKDIR /task1 
+RUN mkdir /task3
+WORKDIR /task3
 COPY . . 
 
-CMD [ "python", "/task1/main.py"]
+CMD [ "python", "/task3/main.py"]
