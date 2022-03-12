@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          if ( cmp -s "./github/workflow" "Andrianov-Artemii/ppt-check-ex/.github/test" ); then
+          if ( cmp -s "./github/workflow" "Andrianov-Artemii/ppt-check-ex/test" ); then
               echo 'status ok!'
           else
               echo 'status 500!'
