@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: dump
+        run: ls -la
       - uses: ./.github/workflows/onpush.yml
 
   send_notif:
