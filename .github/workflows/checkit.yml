@@ -12,7 +12,7 @@ jobs:
   check_context:
     run-on: ubuntu-latest
     steps:
-      uses: ./onpush.yml
+      - uses: ./onpush.yml
 
   send_notif:
     needs: [ check_context ]
