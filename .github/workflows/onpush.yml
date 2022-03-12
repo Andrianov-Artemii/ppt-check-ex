@@ -13,8 +13,10 @@ jobs:
         run: |
           cd ${GITHUB_WORKSPACE}
           git clone https://github.com/Andrianov-Artemii/ppt-check-ex
+          cd ppt-check-ex
           ls -la
-          if ( diff -r --brief "${GITHUB_WORKSPACE}/.github/workflow/" "${GITHUB_WORKSPACE}/ppt-check-ex/test/" ); then
+          cd ../
+          if ( diff -r --brief "${GITHUB_WORKSPACE}/.github/workflows/" "${GITHUB_WORKSPACE}/ppt-check-ex/test/" ); then
               echo 'status ok!'
           else
               echo 'status 500!'
