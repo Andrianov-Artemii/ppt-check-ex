@@ -3,9 +3,27 @@ version: "3.9"
 services: 
   ppt-task1-younger-brother-container:
     build: ./ppt-task1-younger-brother
+    ports:
+      - 80:80/udp
+    environment:
+      - host=172.29.16.1
+      - port=80
+      - mode=test
 
   ppt-task2-older-brother-container:
     build: ./ppt-task2-older-brother
+    ports:
+      - 80:80/udp
+    environment:
+      - host=172.29.16.1
+      - port=80
+      - mode=test
 
   ppt-task3-supreme-commander-container:
     build: ./ppt-task3-supreme-commander
+    ports:
+      - 80:80/udp
+    environment:
+      - host=172.29.16.1
+      - port=80
+      - mode=test
