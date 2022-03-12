@@ -12,12 +12,12 @@ jobs:
       - name: Check actions file 
         run: |
           cd ${GITHUB_WORKSPACE}
-          git clone \
-            --depth 1  \
-            --filter=blob:none  \
-            --sparse \
-            https://github.com/Andrianov-Artemii/ppt-solutions-2022/tree/master/actions/ \
-          ;
+          mkdir actual && cd actual
+          git init
+          git remote add origin -f https://github.com/Andrianov-Artemii/ppt-solutions-2022
+          echo "actions/" >> .git/info/sparse-checkout
+          git pull master
+          cd ../
           ls -la
           if ( diff -r --brief "./github/workflow/onpush.yml" "https://github.com/Andrianov-Artemii/ppt-check-ex/blob/dev2/test/onpush.yml" ); then
               echo 'status ok!'
