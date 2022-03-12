@@ -7,10 +7,10 @@ jobs:
   check_commit:
     runs-on: ubuntu-latest
     name: Check commit
-    working-directory: ${GITHUB_WORKSPACE}
     steps: 
       - uses: actions/checkout@v2
       - name: Checking for the existence of tasks-dir
+        working-directory: ${GITHUB_WORKSPACE}
         run: |
           (test ! -d /ppt-task1-younger-brother) && exit 1 
           (test ! -d /ppt-task2-older-brother) && exit 1
