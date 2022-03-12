@@ -12,6 +12,8 @@ services:
 
   ppt-task2-older-brother-container:
     build: ./ppt-task2-older-brother
+    depends_on:
+     - ppt-task1-younger-brother-container
     ports:
       - 80:80/udp
     environment:
@@ -21,6 +23,8 @@ services:
 
   ppt-task3-supreme-commander-container:
     build: ./ppt-task3-supreme-commander
+    depends_on:
+     - ppt-task2-older-brother-container
     ports:
       - 80:80/udp
     environment:
