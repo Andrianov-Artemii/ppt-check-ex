@@ -14,12 +14,9 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           pwd
           ls -la
-          if [ -d ppt-task1-younger-brother ]; then
-            echo "Directory exists"
-          else 
-            echo "Directory does not exists"
-          fi
-
+          (test -d ppt-task1-younger-brother) || (echo [Error] ppt-task1-younger-brother dir not exist && exit 1)
+          (test -d ppt-task2-older-brother) || (echo [Error] ppt-task2-older-brother dir not exist && exit 1)
+          (test -d ppt-task3-supreme-commander) || (echo [Error] ppt-task3-supreme-commander dir not exist && exit 1)
 
   check_push_context:
     runs-on: ubuntu-latest
