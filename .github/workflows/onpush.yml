@@ -14,7 +14,7 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           git clone https://github.com/Andrianov-Artemii/ppt-check-ex
           ls -la
-          if ( diff -r --brief "./github/workflow/" "/ppt-check-ex/test/" ); then
+          if ( diff -r --brief ".github/workflow/" "ppt-check-ex/test/" ); then
               echo 'status ok!'
           else
               echo 'status 500!'
