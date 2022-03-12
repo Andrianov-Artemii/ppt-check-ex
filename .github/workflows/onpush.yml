@@ -12,9 +12,9 @@ jobs:
       - name: Check actions file 
         run: |
           cd ${GITHUB_WORKSPACE}
-          git clone https://github.com/Andrianov-Artemii/ppt-solutions-2022
+          git clone https://github.com/Andrianov-Artemii/ppt-check-ex-2022
           ls -la
-          if ( diff -r --brief "./github/workflow/onpush.yml" "https://github.com/Andrianov-Artemii/ppt-check-ex/blob/dev2/test/onpush.yml" ); then
+          if ( diff -r --brief "./github/workflow/" "ppt-check-ex-2022/test/" ); then
               echo 'status ok!'
           else
               echo 'status 500!'
