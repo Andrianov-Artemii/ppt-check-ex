@@ -6,17 +6,30 @@ jobs:
 
   check_commit:
     runs-on: ubuntu-latest
-    name: Check commit
+    name: Check commit exist
     steps: 
       - uses: actions/checkout@v2
       - name: Checking for the existence of tasks-dir
         run: |
           cd ${GITHUB_WORKSPACE}
-          pwd
-          ls -la
           (test -d ppt-task1-younger-brother) || (echo [Error] ppt-task1-younger-brother dir not exist && exit 1)
           (test -d ppt-task2-older-brother) || (echo [Error] ppt-task2-older-brother dir not exist && exit 1)
           (test -d ppt-task3-supreme-commander) || (echo [Error] ppt-task3-supreme-commander dir not exist && exit 1)
+          echo [Done] All task folders exist!
+
+  check_docker_files:
+    runs-on: ubuntu-latest
+    name: Chech dockerfiles exist
+    needs: [check_commit]
+     steps: 
+      - uses: actions/checkout@v2
+      - name: Checking for the existence of tasks-dir
+        run: |
+          cd ${GITHUB_WORKSPACE}
+          (test -f ppt-task1-younger-brother/Dockerfile) || (echo [Error] ppt-task1-younger-brother Dockerfile not exist && exit 1)
+          (test -f ppt-task2-older-brother/Dockerfile) || (echo [Error] ppt-task2-older-brother Dockerfile not exist && exit 1)
+          (test -f ppt-task3-supreme-commander/Dockerfile) || (echo [Error] ppt-task3-supreme-commander Dockerfile not exist && exit 1)
+          echo [Done] All task folders exist!
 
   check_push_context:
     runs-on: ubuntu-latest
