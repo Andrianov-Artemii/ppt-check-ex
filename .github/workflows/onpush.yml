@@ -14,9 +14,9 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           pwd
           ls -la
-          (test ! -d /ppt-task1-younger-brother) && exit 1 
-          (test ! -d /ppt-task2-older-brother) && exit 1
-          (test ! -d /ppt-task3-supreme-commander) && exit 1 
+          (test ! -d ppt-task1-younger-brother) && exit 1 
+          (test ! -d ppt-task2-older-brother) && exit 1
+          (test ! -d ppt-task3-supreme-commander) && exit 1 
 
 
   check_push_context:
