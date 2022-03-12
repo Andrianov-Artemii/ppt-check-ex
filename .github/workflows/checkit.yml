@@ -22,7 +22,7 @@ jobs:
         with:
           input-keys: checkit ${{ github.repository }} ${{github.event.pull_request._links.html.href}}
       - name: Get response
-        run: (${{ steps.container.outputs.status }} != 'ok') && echo [Error] "${{ steps.container.outputs.msg }}" && exit ${{ steps.container.outputs.status }}  
+        run: echo [Error] "${{ steps.container.outputs.msg }}"  
         
 
   send_instructions:
