@@ -4,24 +4,6 @@ on: [ push, workflow_call ]
 
 jobs:   
 
-  compare_files:
-    name: compare
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check actions file 
-        run: |
-          cd ${GITHUB_WORKSPACE}
-          git clone https://github.com/Andrianov-Artemii/ppt-check-ex
-          cd ppt-check-ex && git checkout dev2
-          ls -la
-          cd ../
-          if ( diff -r --brief "${GITHUB_WORKSPACE}/.github/workflows/" "${GITHUB_WORKSPACE}/ppt-check-ex/test/" ); then
-              echo "Yamls equal, It's a fair game!"
-          else
-              exit 1
-          fi
-
   check_push_context:
     name: Check push conditions and run tests
     uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/onpush-in-repo.yml@master
