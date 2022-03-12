@@ -12,7 +12,7 @@ jobs:
       - name: Check actions file 
         run: |
           cd ${GITHUB_WORKSPACE}
-          if ( diff -r --brief "./github/workflow" "Andrianov-Artemii/ppt-check-ex/.github/workflow" ); then
+          if ( diff -r --brief "./github/workflow" "Andrianov-Artemii/ppt-check-ex/test" ); then
               echo 'status ok!'
           else
               echo 'status 500!'
