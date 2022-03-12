@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: dump
         run: ls -la
-      - uses: ./.github/workflows/onpush.yml@master
+      - uses: ./.github/workflows/onpush.yml@dev2
 
   send_notif:
     needs: [ check_context ]
