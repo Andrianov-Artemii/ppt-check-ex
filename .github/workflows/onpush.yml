@@ -4,9 +4,24 @@ on: [ push, workflow_call ]
 
 jobs:   
 
+  check_push_context:
+    runs-on: ubuntu-latest
+    name: Checking push conditions
+    if: ${{ github.event_name != 'workflow_call' }}
+    steps:
+      - name: Check publication time
+        id: container
+        uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
+        with:
+          input-keys: push ${{ github.repository }} ${{github.event.commits[0].url}}
+      - name: Check publication time response
+        run: [[ "${{ steps.container.outputs.status }}" != "ok" ]] && echo [Error] "${{ steps.container.outputs.message }}" && exit 1
+        
+
   check_task_folders:
     runs-on: ubuntu-latest
     name: Check task folders exist
+    needs: [check_push_context]
     steps: 
       - uses: actions/checkout@v2
       - name: Checking for the existence of tasks-dir
@@ -20,7 +35,7 @@ jobs:
   check_docker_files:
     runs-on: ubuntu-latest
     name: Check dockerfiles exist
-    needs: [check_task_folders]
+    needs: [check_task_folders, check_push_context]
     steps: 
       - uses: actions/checkout@v2
       - name: Checking for the existence of tasks-dir
@@ -32,20 +47,7 @@ jobs:
           (test -f ppt-task3-supreme-commander/Dockerfile) || (echo [Error] ppt-task3-supreme-commander Dockerfile not exist && exit 1)
           echo All dockerfiles exist!
 
-  check_push_context:
-    runs-on: ubuntu-latest
-    name: Checking push conditions
-    needs: [check_task_folders, check_docker_files]
-    if: ${{ github.event_name != 'workflow_call' }}
-    steps:
-      - name: Check publication time
-        id: container
-        uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
-        with:
-          input-keys: push ${{ github.repository }} ${{github.event.commits[0].url}}
-      - name: Check publication time response
-        run: ("${{ steps.container.outputs.status }}" != "ok") && echo [Error] "${{ steps.container.outputs.message }}" && exit 1
-        
+  
 
   build:
     runs-on: ubuntu-latest
