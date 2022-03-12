@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
+        name: Check actions file 
+        run: |
           cd ${GITHUB_WORKSPACE}
           if ( diff -r --brief "./github/workflow" "Andrianov-Artemii/ppt-check-ex/.github/workflow" ); then
               echo 'status ok!'
