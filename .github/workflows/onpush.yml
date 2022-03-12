@@ -14,9 +14,11 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           pwd
           ls -la
-          (test -d ppt-task1-younger-brother) && echo 'Finded ppt-task1-younger-brother'
-          (test -d ppt-task2-older-brother) && echo 'Finded ppt-task2-older-brother'
-          (test -d ppt-task3-supreme-commander) && echo 'ppt-task3-supreme-commander'
+          if [ -d ppt-task1-younger-brother ]; then
+            echo "Directory exists"
+          else 
+            echo "Directory does not exists"
+          fi
 
 
   check_push_context:
