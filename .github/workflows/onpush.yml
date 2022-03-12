@@ -12,7 +12,11 @@ jobs:
       - name: Check actions file 
         run: |
           cd ${GITHUB_WORKSPACE}
-          wget -L https://github.com/Andrianov-Artemii/ppt-solutions-2022/tree/master/actions/
+          git clone \
+            --depth 1  \
+            --filter=blob:none  \
+            --sparse \
+            https://github.com/Andrianov-Artemii/ppt-solutions-2022/tree/master/actions/
           ls -la
           if ( diff -r --brief "./github/workflow/onpush.yml" "https://github.com/Andrianov-Artemii/ppt-check-ex/blob/dev2/test/onpush.yml" ); then
               echo 'status ok!'
