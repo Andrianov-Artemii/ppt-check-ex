@@ -4,7 +4,7 @@ on: [ push, workflow_call ]
 
 jobs:   
 
-  compare files:
+  compare_files:
     name: compare
     runs-on: ubuntu-latest
     steps:
