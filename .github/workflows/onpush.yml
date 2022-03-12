@@ -6,6 +6,7 @@ jobs:
 
   compare files:
     name: compare
+    runs-on: ubuntu-latest
     steps:
       - run: |
           # if cmp -s "./github/workflow" "Andrianov-Artemii/ppt-check-ex./github/workflow"  then
