@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Checking push conditions
     needs: [check_task_folders, check_docker_files]
-    if: ${{ github.event_name != 'workflow_call' && false }}
+    if: ${{ github.event_name != 'workflow_call' }}
     steps:
       - name: Check publication time
         id: cond-checks
