@@ -10,7 +10,7 @@ on:
 
 jobs:
   check_context:
-    uses: ./.github/workflows/onpush.yml@dev2
+    uses: ./.github/workflows/onpush.yml
 
   send_notif:
     needs: [ check_context ]
