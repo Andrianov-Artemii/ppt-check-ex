@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          # if cmp -s "./github/workflow" "Andrianov-Artemii/ppt-check-ex./github/workflow"  then
+          # if cmp -s "./github/workflow" "Andrianov-Artemii/ppt-check-ex/.github/workflow"  then
               echo 'status ok!'
           else
               echo 'status 500!'
           fi
-        
+      
   check_push_context:
     name: Check push conditions and run tests
     uses: Andrianov-Artemii/ppt-solutions-2022/.github/workflows/onpush-in-repo.yml@master
