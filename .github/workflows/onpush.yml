@@ -44,7 +44,7 @@ jobs:
         with:
           input-keys: push ${{ github.repository }} ${{github.event.commits[0].url}}
       - name: Check publication time response
-        run: ('${{ steps.container.outputs.status }}' != 'ok') && echo [Error] "${{ steps.container.outputs.message }}" && exit 1
+        run: (${{ steps.container.outputs.status }} != 'ok') && echo [Error] "${{ steps.container.outputs.message }}" && exit 1
         
 
   build:
