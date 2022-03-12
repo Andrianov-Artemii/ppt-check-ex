@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: dump
-        run: ls -la
+        run: cd ./.github/workflows; ls -la
       - uses: ./.github/workflows/onpush.yml@dev2
 
   send_notif:
