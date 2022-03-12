@@ -26,6 +26,7 @@ jobs:
       - name: Checking for the existence of tasks-dir
         run: |
           cd ${GITHUB_WORKSPACE}
+          (test -f docker-compose.yml) || (echo [Error] root docker-compose.yml not exist && exit 1)
           (test -f ppt-task1-younger-brother/Dockerfile) || (echo [Error] ppt-task1-younger-brother Dockerfile not exist && exit 1)
           (test -f ppt-task2-older-brother/Dockerfile) || (echo [Error] ppt-task2-older-brother Dockerfile not exist && exit 1)
           (test -f ppt-task3-supreme-commander/Dockerfile) || (echo [Error] ppt-task3-supreme-commander Dockerfile not exist && exit 1)
