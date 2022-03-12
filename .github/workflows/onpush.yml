@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Checking for the existence of tasks-dir
         run: |
-          cd ./ppt-task1-younger-brothe
+          echo "${GITHUB_WORKSPACE}"
           (test ! -d ppt-task1-younger-brother) && exit 1 
           (test ! -d ppt-task2-older-brother) && exit 2 
           (test ! -d ppt-task3-supreme-commander) && exit 3 
