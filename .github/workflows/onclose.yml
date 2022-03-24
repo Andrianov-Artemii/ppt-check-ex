@@ -4,20 +4,15 @@ name: onclose
 on:
   pull_request:
     branches: [checked]
-    types: [ close ]
+    types: [ closed]
   
 jobs:
   send-instructions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v3
+      - name: Send instructions 
+        uses: thollander/actions-comment-pull-request@v1
+        
         with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          github.issues.createComment({
-          issue_number: context.issue.number,
-          owner: context.repo.owner,
-          repo: context.repo.repo,
-          body: 'Репозиторий был проверен и закрыт, так как не соответствует 
-            требованиям, для повторной отправки решения на проверку после внесения правок, переоткройте PR!'
-          })
+          message: '${{ github.actor }} закрыл ваше решение, переоткройте его, когда будете готовы к повторный проверке!'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

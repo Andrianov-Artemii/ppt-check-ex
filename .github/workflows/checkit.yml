@@ -3,26 +3,32 @@
 name: Check it!
 
 on:
-
   pull_request:
     branches:
       - checked
     types: [opened, reopened]
 
 jobs:
+  print-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo 'test'
   security-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: github dump
-      env:
-        dump: ${{ toJson(github.event.pull_request._links.html)}}
-      run: echo "$dump"
-    - name: Send request
-      uses: appleboy/telegram-action@master
-      with:
-        to: "-679349277"
-        token: "5292735252:AAHbDsG2pWZlYYTlUVOdwE4scVs7c62lz7U"
-        message: |
-            ${{ github.actor }} переоткрыл заявку на проверку, надо поглазеть👀!         
-            Ссылка на PR: ${{github.event.pull_request._links.html.href}}
-    
+      - name: Send message
+        uses: Andrianov-Artemii/ppt-solutions-2022/actions/ppt-alert-bot@master
+        with:
+          input-keys: checkit ${{ github.repository }} ${{github.event.pull_request._links.html.href}}
+  send_instructions:
+    needs: [ security-tests ]
+    runs-on: ubuntu_latest
+    name: Send instructions for parts
+    if: ${{ github.event.action == 'opened' }}
+    steps:
+      - name: Send instructions
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: '❇️Вы открыли PR на проверку решения❇️\nЯ уже сообщил организаторам, что вы готовы к проверке, они скоро придут и посмотрят ваше решение\n❗️Не делайте merge пул реквеста сами, иначе оно не будет проверено❗️'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
